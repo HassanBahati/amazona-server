@@ -1,6 +1,7 @@
 // imports 
 const express = require('express')
 const data = require('./data.js')
+const port = process.env.PORT
 
 // instaiting express 
 const app = express();
@@ -15,6 +16,6 @@ app.get('/api/products', (req,res) =>{
 })
 
 // setting port
-app.listen(5000, ()=>{
-    console.log('Server running at port 5000')
+app.listen(port, ()=>{
+    console.log(`Server running at port ${port}`)
 });
