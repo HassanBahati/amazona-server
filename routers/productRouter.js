@@ -8,6 +8,9 @@ const productRouter = express.Router();
 productRouter.get(
   "/seed",
   expressAsyncHandler(async (req, res) => {
-    const createdProduct = await Product.insertMany(data.products);
+    const createdProducts = await Product.insertMany(data.products);
+    res.send({ createdProducts });
   })
 );
+
+module.exports = productRouter;
