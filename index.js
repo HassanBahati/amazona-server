@@ -9,7 +9,7 @@ const userRouter = require("./routers/userRouter.js");
 const app = express();
 
 //connct to mongose
-mongoose.connect("mongodb://localhost/amazona", {
+mongoose.connect(process.env.MONGODB_URL || "mongodb://localhost/amazona", {
   useNewUrlParser: true,
   useUnifiedTopology: true,
   useCreateIndex: true,
