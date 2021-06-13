@@ -3,7 +3,7 @@ const express = require("express");
 const data = require("./data.js");
 const port = process.env.PORT || 5000;
 
-// instaiting express
+// instantiating express
 const app = express();
 
 // root handler
