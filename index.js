@@ -1,13 +1,16 @@
 // imports
 const express = require("express");
 const mongoose = require("mongoose");
+const dotenv = require('dotenv')
 const port = process.env.PORT || 5000;
 const userRouter = require("./routers/userRouter.js");
 const productRouter = require("./routers/productRouter.js");
 
+dotenv.config();
+
 // instantiating express
 const app = express();
- 
+
 //connct to mongose
 mongoose.connect(process.env.MONGODB_URL || "mongodb://localhost/amazona", {
   useNewUrlParser: true,
