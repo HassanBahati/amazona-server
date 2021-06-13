@@ -1,15 +1,26 @@
 // imports
 const express = require("express");
 const data = require("./data.js");
+const mongoose = require("mongoose");
 const port = process.env.PORT || 5000;
+const userRouter = require("./routers/userRouter.js");
 
 // instantiating express
 const app = express();
+
+//connct to mongose
+mongoose.connect("mongodb://localhost/amazona", {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+  useCreateIndex: true,
+});
 
 // root handler
 app.get("/", (req, res) => {
   res.send("Server is ready");
 });
+{
+}
 
 // products route
 app.get("/api/products", (req, res) => {
@@ -24,6 +35,11 @@ app.get("/api/products/:id", (req, res) => {
   } else {
     res.status(404).send({ message: "Product not found" });
   }
+});
+
+app.use("/api/users", userRouter);
+app.use((err, req, res, next) => {
+  res.status(500).send({ message: err });
 });
 
 // setting port
