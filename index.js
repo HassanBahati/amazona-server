@@ -2,6 +2,7 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const dotenv = require("dotenv");
+const bodyParser = require('body-parser');
 const port = process.env.PORT || 5000;
 const userRouter = require("./routers/userRouter.js");
 const productRouter = require("./routers/productRouter.js");
@@ -12,6 +13,7 @@ dotenv.config();
 const app = express();
 
 //middleware
+app.use(bodyParser.json());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
@@ -20,6 +22,7 @@ mongoose.connect(process.env.MONGODB_URL || "mongodb://localhost/amazona", {
   useNewUrlParser: true,
   useUnifiedTopology: true,
   useCreateIndex: true,
+   useFindAndModify:false
 });
 
 // root handler

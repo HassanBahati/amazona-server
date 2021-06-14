@@ -29,7 +29,7 @@ userRouter.post(
           email: user.email,
           isAdmin: user.isAdmin,
           token: generateToken(user),
-        });
+        })
         return;
       }
     }
@@ -39,7 +39,7 @@ userRouter.post(
 
 userRouter.post(
   "/register",
-  expressAsyncHandler(async (Req, res) => {
+  expressAsyncHandler(async (req, res) => {
     const user = new User({
       name: req.body.name,
       email: req.body.email,
