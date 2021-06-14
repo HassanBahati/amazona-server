@@ -29,7 +29,10 @@ const isAuth = (req, res, next) => {
         }
       }
     );
+  } else {
+    res.status(401).send({ message: "No Token" });
   }
 };
 
 module.exports = generateToken;
+module.exports = isAuth;
