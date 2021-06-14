@@ -30,4 +30,17 @@ orderRouter.post(
   })
 );
 
+orderRouter.get(
+  "/:id",
+  isAuth,
+  expressAsyncHandler(async (req, res) => {
+    const order = await order.findById(req.params.id);
+    if (order) {
+      res.send(order);
+    } else {
+      res.status(404).send({ message: "Order not Found" });
+    }
+  })
+);
+
 module.exports = orderRouter;
